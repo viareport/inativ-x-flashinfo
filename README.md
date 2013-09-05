@@ -1,6 +1,6 @@
 # A propos
 
-Flash info utilisé pour affiché des messages
+Flash info utilisé pour afficher des messages
 
 # Tâches grunts
 
