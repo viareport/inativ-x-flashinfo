@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>x-flashinfo - X-Tag</title>
+    <link rel="stylesheet" type="text/css" href="/dist/inativ-x.css"/>
+    <style>
+        .close {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        #flashinfo {
+            padding: 5px;
+            color: #FFFFFF;
+            width: 400px;
+            text-align: center;
+            white-space:nowrap;
+            margin: auto;
+        }
+        #flashinfo[type="info"] {
+            background-color: #51a351;
+        }
+        #flashinfo[type="error"] {
+            background-color: #bd362f;
+        }
+        #buttons {
+            margin-top: 100px;
+        }
+        #wrapper {
+            margin: auto;
+            width: 500px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <x-flashinfo hidden id="flashinfo"></x-flashinfo>
+        <div id="buttons">
+            <button id="displayInfo">Afficher le message info</button>
+            <button id="displayError">Afficher le message erreur</button>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="/demo/x-tag-core.js"></script>      
+<script type="text/javascript" src="/dist/main.js"></script>      
+<script type="text/javascript">
+
+    document.addEventListener('DOMComponentsLoaded', function(){
+
+        var displayInfoButton = document.getElementById("displayInfo");
+        displayInfoButton.addEventListener("click", function(e) {
+            var flashinfo = document.getElementById("flashinfo");
+            flashinfo.show({
+                type: "info",
+                message: "Message à caractère informatif",
+                isSuccess: function() {
+                    return true;
+                }
+            });
+        });
+
+        var displayErrorButton = document.getElementById("displayError");
+        displayErrorButton.addEventListener("click", function(e) {
+            var flashinfo = document.getElementById("flashinfo");
+            flashinfo.show({
+                type: "error",
+                message: "Ceci est un message d'erreur",
+                isSuccess: function() {
+                    return false;
+                }
+            });
+        });
+    }, false);
+
+</script>
+
+</html>
